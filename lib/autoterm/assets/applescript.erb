@@ -1,0 +1,17 @@
+tell application "iTerm"
+  create window with default profile
+  tell current window
+    <%- tabs.each_with_index do |tab, index| -%>
+    <%- unless index.zero? %>
+    create tab with default profile
+    <%- end -%>
+    tell current session
+      set name to "<%= escape tab.name %>"
+      write text "cd <%= escape root %>"
+      <%- tab.commands.each do |command| -%>
+      write text "<%= escape command %>"
+      <%- end -%>
+    end tell
+    <%- end -%>
+  end tell
+end tell

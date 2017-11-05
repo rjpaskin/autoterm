@@ -19,4 +19,10 @@ module Autoterm
       @project_name = project_name
     end
   end
+
+  class ExecutionError < Error
+    def initialize(stderr)
+      super "Error whilst running project:\n  #{stderr}"
+    end
+  end
 end
