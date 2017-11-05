@@ -8,5 +8,11 @@ module Autoterm
         cmd.to_s.length.nonzero?
       end
     end
+
+    def ==(other)
+      return false unless self.class === other
+
+      name == other.name && commands == other.commands
+    end
   end
 end
