@@ -1,5 +1,5 @@
 require "autoterm/version"
 
 module Autoterm
-  # Your code goes here...
+  autoload :Tab, "autoterm/tab"
 end
