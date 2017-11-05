@@ -11,4 +11,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  Dir[File.expand_path("../../spec/matchers/*.rb", __FILE__)].each {|f| require f }
 end
