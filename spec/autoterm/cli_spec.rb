@@ -48,14 +48,14 @@ RSpec.describe Autoterm::CLI do
           allow(Autoterm::TmuxinatorProject).to receive(:from_yaml_file)
             .with("test").and_return(project)
 
-          allow(Autoterm::Applescript).to receive(:new).and_return(applescript)
+          allow(Autoterm::OSAScript).to receive(:new).and_return(applescript)
         end
 
         it "executes the applescript for the given project" do
           subject
 
           aggregate_failures do
-            expect(Autoterm::Applescript).to have_received(:new).with(project)
+            expect(Autoterm::OSAScript).to have_received(:new).with(project)
             expect(applescript).to have_received(:run)
           end
         end

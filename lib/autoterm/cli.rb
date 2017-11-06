@@ -13,7 +13,7 @@ module Autoterm
         error! "Provide a project name"
       end
 
-      Applescript.new(
+      OSAScript.new(
         TmuxinatorProject.from_yaml_file(project_name)
       ).run
     rescue Error => error

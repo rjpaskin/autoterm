@@ -3,7 +3,7 @@ require "erb"
 require "open3"
 
 module Autoterm
-  class Applescript
+  class OSAScript
     attr_reader :project
 
     TEMPLATE_PATH = File.expand_path(
