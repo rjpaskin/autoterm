@@ -53,6 +53,17 @@ module ItermIntrospection
         end or raise "Session at index #{index} does not match filters"
       end
     end
+
+    def running?
+      synchronize do
+        result = CommandRunning.osascript <<-JS, raise: true
+          Application("System Events").applicationProcesses.byName("iTerm2").exists()
+        JS
+
+        result.stdout.chomp == "true"
+      end
+    end
+
     def sessions_with(attributes)
       sessions.select do |session|
         attributes.all? do |key, value|

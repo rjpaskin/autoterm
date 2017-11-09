@@ -1,4 +1,5 @@
 tell application "iTerm"
+  activate
   create window with default profile
   tell current window
     <%- tabs.each_with_index do |tab, index| -%>

@@ -7,6 +7,10 @@ RSpec.describe "Starting a project", type: :integration do
     subject { run "autoterm simple" }
 
     context "when iTerm is already running" do
+      before(:each) do
+        osascript :activate_iterm, raise: true
+      end
+
       it "opens a new window" do
         expect {
           subject
@@ -39,6 +43,21 @@ RSpec.describe "Starting a project", type: :integration do
               %r{printf "%s:%s" "\$PWD" "three"; echo},
               "#{home}:three"
             ]
+        end
+      end
+    end
+
+    context "when iTerm is not running" do
+      before(:each) do
+        osascript :kill_iterm, raise: true
+      end
+
+      it "runs the iTerm2 application" do
+        subject
+
+        aggregate_failures do
+          expect(iterm).to be_running
+          expect(iterm.windows.count).to be > 1
         end
       end
     end

@@ -1,6 +1,14 @@
 function run(ARGV) {
   var systemEvents = Application("System Events");
 
+  if (!systemEvents.applicationProcesses.byName("iTerm2").exists()) {
+    return JSON.stringify({
+      windows: [],
+      tabs: [],
+      sessions: [],
+    });
+  }
+
   function rubyify(key) {
     return key.replace(/([a-z\d])([A-Z]+)/g, "$1_$2")
       .toLowerCase().replace(/^is_(.+)/, "$1?");
