@@ -1,0 +1,11 @@
+name: simple
+root: <%= ENV["HOME"] %>/.tmuxinator
+
+<%- if "test".length == 4 -%> # for testing ERB
+windows:
+  - tab_one: printf "%s:%s" "$PWD" "one"; echo
+  - tab_two:
+    - printf "%s:%s" "$PWD" "two-1"; echo
+    - printf "%s:%s" "$PWD" "two-2"; echo
+  - tab_three: printf "%s:%s" "$PWD" "three"; echo
+<%- end -%>

@@ -13,4 +13,11 @@ RSpec.configure do |config|
   end
 
   Dir[File.expand_path("../../spec/support/**/*.rb", __FILE__)].sort.each {|f| require f }
+
+  config.include CommandRunning, type: :integration
+  config.include ItermIntrospection, type: :integration
+
+  config.around(:example, type: :integration) do |example|
+    with_cleanup { example.run }
+  end
 end
