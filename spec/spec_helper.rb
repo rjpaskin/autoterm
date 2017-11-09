@@ -18,6 +18,18 @@ RSpec.configure do |config|
   config.include ScreenshotOnFailure, type: :integration
   config.include ItermIntrospection, type: :integration
 
+  config.before(:suite) do
+    running_integration_specs = config.files_to_run.any? do |file|
+      File.dirname(file).end_with? "/integration"
+    end
+
+    if running_integration_specs && ENV["ITERM_SESSION_ID"]
+      raise "Running integration specs inside iTerm is not supported,\
+        since we quit iTerm as part of the specs.\
+        Try using Terminal.app instead.".squeeze(" ")
+    end
+  end
+
   config.after(:example, type: :integration) do |example|
     screenshot_if_failed(example)
   end
