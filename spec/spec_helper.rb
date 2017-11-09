@@ -15,7 +15,12 @@ RSpec.configure do |config|
   Dir[File.expand_path("../../spec/support/**/*.rb", __FILE__)].sort.each {|f| require f }
 
   config.include CommandRunning, type: :integration
+  config.include ScreenshotOnFailure, type: :integration
   config.include ItermIntrospection, type: :integration
+
+  config.after(:example, type: :integration) do |example|
+    screenshot_if_failed(example)
+  end
 
   config.around(:example, type: :integration) do |example|
     with_cleanup { example.run }
