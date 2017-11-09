@@ -12,5 +12,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  Dir[File.expand_path("../../spec/matchers/*.rb", __FILE__)].each {|f| require f }
+  Dir[File.expand_path("../../spec/support/**/*.rb", __FILE__)].sort.each {|f| require f }
 end
