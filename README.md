@@ -1,28 +1,16 @@
 # Autoterm
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/autoterm`. To experiment with that code, run `bin/console` for an interactive prompt.
+**WARNING** alpha software! Use at your own risk.
 
-TODO: Delete this and the text above, and describe your gem
+Automate the setup of your iTerm2 tabs. Project still in early development.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'autoterm'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install autoterm
 
 ## Usage
 
-TODO: Write usage instructions here
+Currently only [Tmuxinator](https://github.com/tmuxinator/tmuxinator) projects are supported, and only the `root` and `windows` (without panes) keys are supported.
 
 ## Development
 
@@ -32,7 +20,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/autoterm. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rjpaskin/autoterm. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
